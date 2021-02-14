@@ -1,8 +1,27 @@
-import React from 'react';
+import { Work } from '@material-ui/icons';
+import React, { useState, useEffect} from 'react';
+import Todoform from '../Components/Todoform'
 
 const Dashboard = () => {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    setTodos([
+      {
+        title: "Buy more doge coin."
+      },
+      {
+        title: "Invade mars!"
+      }
+    ])
+  }, []);
+
+
   return (
-    <h2>Dashboard</h2>
+    <div>
+      <h2>Dashboard</h2>
+      <Todoform todos={todos} />
+    </div>
   );
 }
 
