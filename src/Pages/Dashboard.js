@@ -1,7 +1,9 @@
 import React from 'react';
 
-export default const Dashboard = () => {
+const Dashboard = () => {
   return (
     <h2>Dashboard</h2>
   );
 }
+
+export default Dashboard;
