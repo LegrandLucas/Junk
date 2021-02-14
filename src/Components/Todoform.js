@@ -5,7 +5,8 @@ import { PersonPinSharp } from '@material-ui/icons';
 
 const Todoform = ( props ) => {
   const [todos, setTodos] = useState([]);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('')
+  const [todo, setTodo] = useState({})
 
   useEffect(() => {
     loadDatas()
@@ -15,20 +16,17 @@ const Todoform = ( props ) => {
     setTodos(props.todos)
   }
 
-    console.log(todos)
 
-  const todo = {
-    title,
-  };
 
   const handleSubmit = e => {
     e.preventDefault();
+    setTodos([...todos, todo])
   }
 
 
   return(
     <div>
-      <form onSubmit={e => handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <TextField
           label="Add title"
           required
