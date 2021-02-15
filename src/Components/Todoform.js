@@ -6,7 +6,11 @@ import { PersonPinSharp } from '@material-ui/icons';
 const Todoform = ( props ) => {
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState('')
-  const [todo, setTodo] = useState({})
+  // const [todo, setTodo] = useState({})
+
+  const todo = {
+    title,
+  }
 
   useEffect(() => {
     loadDatas()
@@ -20,7 +24,9 @@ const Todoform = ( props ) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setTodos([...todos, todo])
+    todos.push(todo)
+    console.log(todo)
+    console.log(todos)
   }
 
 
