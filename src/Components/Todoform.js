@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import { TextField } from '@material-ui/core';
-import { PersonPinSharp } from '@material-ui/icons';
+// import { PersonPinSharp } from '@material-ui/icons';
 
 
 const Todoform = ( props ) => {
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
   // const [todo, setTodo] = useState({})
 
   const todo = {
     title,
+    description,
   }
 
   useEffect(() => {
@@ -20,13 +22,9 @@ const Todoform = ( props ) => {
     setTodos(props.todos)
   }
 
-
-
   const handleSubmit = e => {
     e.preventDefault();
     todos.push(todo)
-    console.log(todo)
-    console.log(todos)
   }
 
 
@@ -40,6 +38,14 @@ const Todoform = ( props ) => {
           margin="normal"
           onChange={e => setTitle(e.target.value)}
           value={title}
+        />
+        <TextField
+          label="Add title"
+          required
+          variant="outlined"
+          margin="normal"
+          onChange={e => setDescription(e.target.value)}
+          value={description}
         />
       </form>
     </div>
