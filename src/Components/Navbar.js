@@ -10,9 +10,12 @@ import AssignmentTurnedInRoundedIcon from '@material-ui/icons/AssignmentTurnedIn
 
 const Navbar = () => {
 
-  const [first, setFirst] = useState(false);
+  const [first, setFirst] = useState(true);
   const [second, setSecond] = useState(false);
   const [third, setThird] = useState(false);
+  const [allTodos, setAllTodos] = useState(true);
+  const [doing, setDoing] = useState(false);
+  const [done, setDone] = useState(false);
 
 
   const Navbar = styled.div`
@@ -48,8 +51,7 @@ const Navbar = () => {
     width: 50px;
     height: 50px;
     object-fit: cover;
-    padding: 1px;
-    /* background: rgb(236,90,180); */
+    padding: 2px;
     background: linear-gradient(90deg, rgba(236,90,180,1) 0%, rgba(176,88,244,1) 50%, rgba(39,88,246,1) 100%);
   `;
 
@@ -57,33 +59,60 @@ const Navbar = () => {
     margin: 0px;
     padding: 0px;
     margin: 40px 0px;
-  `
 
-  const ListItem = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style-type: none;
-    color: white;
-
-    > li {
+    >li {
       display: flex;
-      align-items: center;
+      align-content: center;
+      justify-content: space-between;
+      list-style-type: none;
+      color: white;
+      border-radius: 20px;
+      padding: 0px 10px;
 
-      > svg {
-        opacity: 50%;
-        margin-right: 10px;
+      > div {
+        display: flex;
+        align-items: center;
+
+        > svg {
+          opacity: 50%;
+          margin-right: 10px;
+        }
+      }
+
+      > p {
+        background-color: #29323e;
+        border-radius: 20px;
+        font-size: .8rem;
+        padding: 2px 5px;
+        color: white;
       }
     }
 
-    > p {
-      background-color: grey;
-      border-radius: 20px;
-      font-size: .8rem;
-      padding: 2px 5px;
-      color: white;
+
+
+    #allTodos {
+      background: ${allTodos
+        ?'linear-gradient(90deg, rgba(236,90,180,1) 0%, rgba(176,88,244,1) 50%, rgba(39,88,246,1) 100%)'
+        : 'none'
+      };
+      font-weight:  ${allTodos ? 'bold' : 'none'};
+  }
+    #doing {
+    background: ${doing
+      ? 'linear-gradient(90deg, rgba(236,90,180,1) 0%, rgba(176,88,244,1) 50%, rgba(39,88,246,1) 100%)'
+      : 'none'
+    };
+      font-weight:  ${doing ? 'bold' : 'none'};
+    }
+    #done {
+       background: ${done
+      ? 'linear-gradient(90deg, rgba(236,90,180,1) 0%, rgba(176,88,244,1) 50%, rgba(39,88,246,1) 100%)'
+      : 'none'
+    };
+      font-weight:  ${done ? 'bold' : 'none'};
     }
   `
+
 
   const Slider = styled.div`
     display: grid;
@@ -115,8 +144,23 @@ const Navbar = () => {
     }
 `;
 
+const todoSelection = (props) => {
+  console.log(props)
+  if (props === 'allTodos') {
+    setAllTodos(true)
+    setDoing(false)
+    setDone(false)
+  } else if (props === 'doing') {
+    setAllTodos(false)
+    setDoing(true)
+    setDone(false)
+  } else {
+    setAllTodos(false)
+    setDoing(false)
+    setDone(true)
+  }
+}
 const sliderSelection = (props) => {
-  console.log(props);
   if (props === 'slider1') {
     setFirst(true)
     setSecond(false)
@@ -144,18 +188,18 @@ const sliderSelection = (props) => {
           </NavbarTopIcons>
         </NavbarTop>
         <Todolist>
-          <ListItem>
-            <li><AssignmentRoundedIcon />All</li>
+          <li id='allTodos' onClick={() => todoSelection('allTodos')}>
+            <div><AssignmentRoundedIcon />All</div>
             <p>01</p>
-          </ListItem>
-          <ListItem>
-            <li><AssignmentLateRoundedIcon />Doing</li>
+          </li>
+          <li id='doing' onClick={() => todoSelection('doing')}>
+            <div><AssignmentLateRoundedIcon />Doing</div>
             <p>01</p>
-          </ListItem>
-          <ListItem>
-            <li><AssignmentTurnedInRoundedIcon />Done</li>
+          </li>
+          <li id='done' onClick={() => todoSelection('done')}>
+            <div><AssignmentTurnedInRoundedIcon />Done</div>
             <p>01</p>
-          </ListItem>
+          </li>
         </Todolist>
         <Slider>
           <p id='slider1' onClick={() => sliderSelection('slider1')}>Projects</p>
@@ -163,7 +207,6 @@ const sliderSelection = (props) => {
           <p id='slider3' onClick={() => sliderSelection('slider3')}>Filters</p>
         </Slider>
       </Navbar>
-
     </div>
   )
 }
