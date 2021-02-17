@@ -12,7 +12,7 @@ const Todolist = ({ todos }) => {
     background-color: white;
     padding: 10px;
     margin: 10px;
-    border-radius: 20px;
+        border-radius: 10px;
     border: solid .5px white;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 10px 10px 0 rgb(0 0 0 / 19%);
   `

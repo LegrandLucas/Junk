@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 const Dashboard = () => {
   const [todos, setTodos] = useState([]);
+  const [todoFormDisplay, setTodoformDisplay] = useState(false);
 
   useEffect(() => {
     setTodos([
@@ -38,15 +39,38 @@ const Dashboard = () => {
     top: 0;
     height: 100vh;
     background-color: #F9FAFB;
-    width: calc(100% - 270px);;
+    width: calc(100% - 270px);
+  `
+
+  const MenuBar = styled.div`
+    background-color: white;
+    padding: 10px;
+    border: solid .5px white;
+  `
+
+  const TodoBtn = styled.button`
+    padding: 10px;
+    margin: 10px;
+    border: white solid .5px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    background: rgba(236,90,180,1);
+    /* background: linear-gradient(rgba(236,90,180,1) 0%, rgba(176,88,244,1) 50%, rgba(39,88,246,1) 100%); */
   `
 
 
 
   return (
     <Dashboard>
-      <h2>Add TODO</h2>
-      <Todoform todos={todos} />
+      <MenuBar>
+        <h2>Dashboard</h2>
+      </MenuBar>
+      <TodoBtn onClick={() => setTodoformDisplay(!todoFormDisplay)}>Add todo</TodoBtn>
+      {todoFormDisplay
+        ? <Todoform todos={todos} />
+        : ""
+      }
       <Todolist todos={todos} />
     </Dashboard>
   );
