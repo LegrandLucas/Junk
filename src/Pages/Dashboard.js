@@ -1,6 +1,7 @@
 import { Work } from '@material-ui/icons';
 import React, { useState, useEffect} from 'react';
 import Todoform from '../Components/Todoform';
+import Todolist from '../Components/Todolist';
 import styled from 'styled-components';
 
 const Dashboard = () => {
@@ -9,10 +10,13 @@ const Dashboard = () => {
   useEffect(() => {
     setTodos([
       {
-        title: "Buy more doge coin."
+        description: "Buy more doge coin.",
+        deadline: "01-01-2021"
+
       },
       {
-        title: "Invade mars!"
+        description: "Invade mars!",
+        deadline: "01-01-2021"
       }
     ])
   }, []);
@@ -21,9 +25,10 @@ const Dashboard = () => {
   const Dashboard = styled.div`
     position: fixed;
     left: 270px;
-    margin: 0px 20px;
+    top: 0;
     height: 100vh;
-    width: 100%;
+    background-color: #F9FAFB;
+    width: calc(100% - 270px);;
   `
 
 
@@ -32,6 +37,7 @@ const Dashboard = () => {
     <Dashboard>
       <h2>Add TODO</h2>
       <Todoform todos={todos} />
+      <Todolist todos={todos} />
     </Dashboard>
   );
 }
