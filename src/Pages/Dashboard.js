@@ -1,6 +1,7 @@
 import { Work } from '@material-ui/icons';
 import React, { useState, useEffect} from 'react';
-import Todoform from '../Components/Todoform'
+import Todoform from '../Components/Todoform';
+import styled from 'styled-components';
 
 const Dashboard = () => {
   const [todos, setTodos] = useState([]);
@@ -17,11 +18,21 @@ const Dashboard = () => {
   }, []);
 
 
+  const Dashboard = styled.div`
+    position: fixed;
+    left: 270px;
+    margin: 0px 20px;
+    height: 100vh;
+    width: 100%;
+  `
+
+
+
   return (
-    <div>
-      <h2>Dashboard</h2>
-      {/* <Todoform todos={todos} /> */}
-    </div>
+    <Dashboard>
+      <h2>Add TODO</h2>
+      <Todoform todos={todos} />
+    </Dashboard>
   );
 }
 
