@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components'
 
 const Todo = ({todos}) => {
-  console.log(todos);
-
   const Item = styled.div`
     padding: 10px 20px;
     display: flex;
@@ -20,16 +18,14 @@ const Todo = ({todos}) => {
 
     }
   `
-
-
   return (
     <div>
       {todos.map((todo) => (
-        <Item>
+        <Item key={todo.uid}>
           <input type="checkbox"></input>
           <ul>
-            <li key={todo.description}>{todo.description}</li>
-            <li key={todo.deadline}>{todo.deadline}</li>
+            <li >{todo.description}</li>
+            <li >{todo.deadline}</li>
           </ul>
         </Item>
       ))}

@@ -10,12 +10,22 @@ const Dashboard = () => {
   useEffect(() => {
     setTodos([
       {
+        uid: '01',
+        statut: true,
         description: "Buy more doge coin.",
         deadline: "01-01-2021"
 
       },
       {
+        uid: '02',
+        statut: true,
         description: "Invade mars!",
+        deadline: "01-01-2021"
+      },
+      {
+        uid: '03',
+        statut: false,
+        description: "Buy 1.5 M Bitcoins",
         deadline: "01-01-2021"
       }
     ])
