@@ -66,7 +66,7 @@ const Navbar = () => {
       justify-content: space-between;
       list-style-type: none;
       color: white;
-      border-radius: 20px;
+      border-radius: 10px;
       padding: 0px 10px;
 
       > div {
@@ -81,7 +81,7 @@ const Navbar = () => {
 
       > p {
         background-color: #29323e;
-        border-radius: 20px;
+        border-radius: 10px;
         font-size: .8rem;
         padding: 2px 5px;
         color: white;
@@ -124,13 +124,13 @@ const Navbar = () => {
     text-align: center;
     width: auto;
     height: auto;
-    border-radius: 20px;
+        border-radius: 10px;
 
     > #slider1, #slider2, #slider3 {
       padding: 15px 0px;
       margin: 0;
       align-self: center;
-      border-radius: 20px;
+          border-radius: 10px;
     }
 
     > #slider1 {
