@@ -7,6 +7,8 @@ import lucasPhoto from '../Images/lucasPhoto.png'
 import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 import AssignmentLateRoundedIcon from '@material-ui/icons/AssignmentLateRounded';
 import AssignmentTurnedInRoundedIcon from '@material-ui/icons/AssignmentTurnedInRounded';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const Navbar = () => {
 
@@ -144,8 +146,11 @@ const Navbar = () => {
     }
 `;
 
+  const hideMenu = () => {
+
+  }
+
 const todoSelection = (props) => {
-  console.log(props)
   if (props === 'allTodos') {
     setAllTodos(true)
     setDoing(false)
@@ -185,6 +190,7 @@ const sliderSelection = (props) => {
             <SearchRoundedIcon/>
             <RefreshRoundedIcon/>
             <NotificationsRoundedIcon/>
+            <ArrowBackIosIcon onClick={hideMenu()}/>
           </NavbarTopIcons>
         </NavbarTop>
         <Todolist>
