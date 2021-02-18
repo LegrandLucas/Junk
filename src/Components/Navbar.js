@@ -7,6 +7,8 @@ import lucasPhoto from '../Images/lucasPhoto.png'
 import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 import AssignmentLateRoundedIcon from '@material-ui/icons/AssignmentLateRounded';
 import AssignmentTurnedInRoundedIcon from '@material-ui/icons/AssignmentTurnedInRounded';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const Navbar = () => {
 
@@ -16,6 +18,7 @@ const Navbar = () => {
   const [allTodos, setAllTodos] = useState(true);
   const [doing, setDoing] = useState(false);
   const [done, setDone] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(true)
 
 
   const Navbar = styled.div`
@@ -29,6 +32,17 @@ const Navbar = () => {
     height: 100vh;
     width: 250px;
     padding: 10px;
+  `
+
+  const HiddenNav = styled.div`
+    background-color: #1e1e1e;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 100px;
+    padding: 10px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
   `
 
   const NavbarTop = styled.div`
@@ -145,7 +159,6 @@ const Navbar = () => {
 `;
 
 const todoSelection = (props) => {
-  console.log(props)
   if (props === 'allTodos') {
     setAllTodos(true)
     setDoing(false)
@@ -176,37 +189,47 @@ const sliderSelection = (props) => {
   }
 }
 
-  return (
-    <div>
+return (
+  <div>
+      {activeMenu
+      ?
       <Navbar>
-        <NavbarTop>
-          <Profile src={lucasPhoto}/>
-          <NavbarTopIcons>
-            <SearchRoundedIcon/>
-            <RefreshRoundedIcon/>
-            <NotificationsRoundedIcon/>
-          </NavbarTopIcons>
-        </NavbarTop>
-        <Todolist>
-          <li id='allTodos' onClick={() => todoSelection('allTodos')}>
-            <div><AssignmentRoundedIcon />All</div>
-            <p>01</p>
-          </li>
-          <li id='doing' onClick={() => todoSelection('doing')}>
-            <div><AssignmentLateRoundedIcon />Doing</div>
-            <p>01</p>
-          </li>
-          <li id='done' onClick={() => todoSelection('done')}>
-            <div><AssignmentTurnedInRoundedIcon />Done</div>
-            <p>01</p>
-          </li>
-        </Todolist>
-        <Slider>
-          <p id='slider1' onClick={() => sliderSelection('slider1')}>Projects</p>
-          <p id='slider2' onClick={() => sliderSelection('slider2')}>Tags</p>
-          <p id='slider3' onClick={() => sliderSelection('slider3')}>Filters</p>
-        </Slider>
-      </Navbar>
+          <NavbarTop>
+            <Profile src={lucasPhoto}/>
+            <NavbarTopIcons>
+              <SearchRoundedIcon/>
+              <RefreshRoundedIcon/>
+              <NotificationsRoundedIcon/>
+              <ArrowBackIosIcon onClick={() => setActiveMenu(false)}/>
+            </NavbarTopIcons>
+          </NavbarTop>
+          <Todolist>
+            <li id='allTodos' onClick={() => todoSelection('allTodos')}>
+              <div><AssignmentRoundedIcon />All</div>
+              <p>01</p>
+            </li>
+            <li id='doing' onClick={() => todoSelection('doing')}>
+              <div><AssignmentLateRoundedIcon />Doing</div>
+              <p>01</p>
+            </li>
+            <li id='done' onClick={() => todoSelection('done')}>
+              <div><AssignmentTurnedInRoundedIcon />Done</div>
+              <p>01</p>
+            </li>
+          </Todolist>
+          <Slider>
+            <p id='slider1' onClick={() => sliderSelection('slider1')}>Projects</p>
+            <p id='slider2' onClick={() => sliderSelection('slider2')}>Tags</p>
+            <p id='slider3' onClick={() => sliderSelection('slider3')}>Filters</p>
+          </Slider>
+        </Navbar>
+        :
+      <HiddenNav >
+        <NavbarTopIcons>
+          <ArrowForwardIosIcon onClick={() => setActiveMenu(true)} />
+        </NavbarTopIcons>
+      </HiddenNav>
+    }
     </div>
   )
 }
