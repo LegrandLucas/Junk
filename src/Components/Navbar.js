@@ -22,7 +22,11 @@ const Navbar = () => {
 
 
   const Navbar = styled.div`
-    display: flex;
+    /* display: flex; */
+    display: ${ activeMenu
+      ? `flex;`
+      : `none;`
+    };
     flex-direction: column;
     background-color: #1e1e1e;
     color: white;
@@ -39,21 +43,29 @@ const Navbar = () => {
     color: white;
     position: fixed;
     top: 0;
-    left: 180px;
+    left: 0;
+     /* left: ${ activeMenu
+    ? `180px;`
+      : `0px;`
+    }; */
     padding: 10px;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
+    transform: ${ activeMenu
+      ? `translateX(500%);`
+      : `translateX(0%);`
+    };
   `
-  const HideBtnActive = styled.div`
-    background-color: #1e1e1e;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: -50px;
-    padding: 10px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-  `
+  // const HideBtnActive = styled.div`
+  //   background-color: #1e1e1e;
+  //   color: white;
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0px;
+  //   padding: 10px;
+  //   transform: translateX(0%);
+  //   transition: transform 0.3s ease-in-out;
+  // `
 
   const NavbarTop = styled.div`
     display: flex;
@@ -201,9 +213,7 @@ const sliderSelection = (props) => {
 }
 
 return (
-  <div>
-      {activeMenu
-      ?
+
       <>
         <Navbar>
             <NavbarTop>
@@ -234,17 +244,14 @@ return (
               <p id='slider3' onClick={() => sliderSelection('slider3')}>Filters</p>
             </Slider>
           </Navbar>
-          <HideBtn >
-              <ArrowBackIosIcon onClick={() => setActiveMenu(false)} />
+        <HideBtn expanded={activeMenu}>
+          {activeMenu
+            ? <ArrowForwardIosIcon onClick={() => setActiveMenu(!activeMenu)} />
+            : <ArrowBackIosIcon onClick={() => setActiveMenu(!activeMenu)} />
+          }
           </HideBtn>
         </>
 
-        :
-      <HideBtnActive >
-          <ArrowForwardIosIcon onClick={() => setActiveMenu(true)} />
-      </HideBtnActive>
-    }
-    </div>
   )
 }
 

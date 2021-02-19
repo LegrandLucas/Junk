@@ -7,8 +7,7 @@ const Todo = ({todos}) => {
     display: flex;
     align-items: center;
     background-color: #F9FAFB;
-        border-radius: 10px;
-
+    border-radius: 10px;
 
     > ul {
       display: flex;
