@@ -34,12 +34,22 @@ const Navbar = () => {
     padding: 10px;
   `
 
-  const HiddenNav = styled.div`
+  const HideBtn = styled.div`
     background-color: #1e1e1e;
     color: white;
     position: fixed;
     top: 0;
-    left: 100px;
+    left: 180px;
+    padding: 10px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  `
+  const HideBtnActive = styled.div`
+    background-color: #1e1e1e;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -50px;
     padding: 10px;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
@@ -47,7 +57,7 @@ const Navbar = () => {
 
   const NavbarTop = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     padding: 10px 5px;
   `
@@ -55,6 +65,7 @@ const Navbar = () => {
     display: flex;
     color: grey;
     justify-items: space-between;
+    margin: 10px;
     > svg {
       margin: 0px 2px;
     }
@@ -193,42 +204,45 @@ return (
   <div>
       {activeMenu
       ?
-      <Navbar>
-          <NavbarTop>
-            <Profile src={lucasPhoto}/>
-            <NavbarTopIcons>
-              <SearchRoundedIcon/>
-              <RefreshRoundedIcon/>
-              <NotificationsRoundedIcon/>
-              <ArrowBackIosIcon onClick={() => setActiveMenu(false)}/>
-            </NavbarTopIcons>
-          </NavbarTop>
-          <Todolist>
-            <li id='allTodos' onClick={() => todoSelection('allTodos')}>
-              <div><AssignmentRoundedIcon />All</div>
-              <p>01</p>
-            </li>
-            <li id='doing' onClick={() => todoSelection('doing')}>
-              <div><AssignmentLateRoundedIcon />Doing</div>
-              <p>01</p>
-            </li>
-            <li id='done' onClick={() => todoSelection('done')}>
-              <div><AssignmentTurnedInRoundedIcon />Done</div>
-              <p>01</p>
-            </li>
-          </Todolist>
-          <Slider>
-            <p id='slider1' onClick={() => sliderSelection('slider1')}>Projects</p>
-            <p id='slider2' onClick={() => sliderSelection('slider2')}>Tags</p>
-            <p id='slider3' onClick={() => sliderSelection('slider3')}>Filters</p>
-          </Slider>
-        </Navbar>
+      <>
+        <Navbar>
+            <NavbarTop>
+              <Profile src={lucasPhoto}/>
+              <NavbarTopIcons>
+                <SearchRoundedIcon/>
+                <RefreshRoundedIcon/>
+                <NotificationsRoundedIcon/>
+              </NavbarTopIcons>
+            </NavbarTop>
+            <Todolist>
+              <li id='allTodos' onClick={() => todoSelection('allTodos')}>
+                <div><AssignmentRoundedIcon />All</div>
+                <p>01</p>
+              </li>
+              <li id='doing' onClick={() => todoSelection('doing')}>
+                <div><AssignmentLateRoundedIcon />Doing</div>
+                <p>01</p>
+              </li>
+              <li id='done' onClick={() => todoSelection('done')}>
+                <div><AssignmentTurnedInRoundedIcon />Done</div>
+                <p>01</p>
+              </li>
+            </Todolist>
+            <Slider>
+              <p id='slider1' onClick={() => sliderSelection('slider1')}>Projects</p>
+              <p id='slider2' onClick={() => sliderSelection('slider2')}>Tags</p>
+              <p id='slider3' onClick={() => sliderSelection('slider3')}>Filters</p>
+            </Slider>
+          </Navbar>
+          <HideBtn >
+              <ArrowBackIosIcon onClick={() => setActiveMenu(false)} />
+          </HideBtn>
+        </>
+
         :
-      <HiddenNav >
-        <NavbarTopIcons>
+      <HideBtnActive >
           <ArrowForwardIosIcon onClick={() => setActiveMenu(true)} />
-        </NavbarTopIcons>
-      </HiddenNav>
+      </HideBtnActive>
     }
     </div>
   )
