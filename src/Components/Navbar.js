@@ -7,8 +7,6 @@ import lucasPhoto from '../Images/lucasPhoto.png'
 import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 import AssignmentLateRoundedIcon from '@material-ui/icons/AssignmentLateRounded';
 import AssignmentTurnedInRoundedIcon from '@material-ui/icons/AssignmentTurnedInRounded';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const Navbar = ({activeMenu}) => {
 
@@ -28,25 +26,10 @@ const Navbar = ({activeMenu}) => {
     flex-direction: column;
     background-color: #1e1e1e;
     color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
     width: 250px;
     padding: 10px;
   `
 
-  const HideBtn = styled.div`
-    background-color: #1e1e1e;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    padding: 10px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-  `
   const NavbarTop = styled.div`
     display: flex;
     justify-content: start;

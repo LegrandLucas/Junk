@@ -39,6 +39,7 @@ const Dashboard = () => {
     /* top: 0; */
     height: 100vh;
     background-color: #F9FAFB;
+      flex-grow: 1;
     /* width: calc(100% - 270px); */
   `
 
