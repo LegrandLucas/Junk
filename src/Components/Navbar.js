@@ -51,10 +51,6 @@ const Navbar = () => {
     padding: 10px;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
-    transform: ${ activeMenu
-      ? `translateX(500%);`
-      : `translateX(0%);`
-    };
   `
   // const HideBtnActive = styled.div`
   //   background-color: #1e1e1e;
