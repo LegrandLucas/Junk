@@ -24,7 +24,7 @@ function App() {
         <NavbarButton activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
         <Switch>
           <Route path="/dashboard">
-            <Dashboard />
+            <Dashboard activeMenu={activeMenu}/>
           </Route>
         </Switch>
       </BrowserRouter>

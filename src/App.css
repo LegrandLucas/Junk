@@ -1,6 +1,5 @@
 .wrapper {
-	display: flex;
-	flex-flow: row nowrap;
+	position: relative;
 }
 .App {
 	text-align: center;

@@ -8,6 +8,21 @@ import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 import AssignmentLateRoundedIcon from '@material-ui/icons/AssignmentLateRounded';
 import AssignmentTurnedInRoundedIcon from '@material-ui/icons/AssignmentTurnedInRounded';
 
+
+const NavbarComp = styled.div`
+    background-color: #1e1e1e;
+    height: 100vh;
+    color: white;
+    width: 250px;
+    padding: 10px;
+    transform: ${props => props.active ? 'translateX(0px)' : 'translateX(-270px)'};
+    /* transition: all .2s ease-out; */
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.0,0.0,0.2,1);
+    position: fixed;
+    top: 0;
+    left: 0;
+  `
 const Navbar = ({activeMenu}) => {
 
   const [first, setFirst] = useState(true);
@@ -17,18 +32,6 @@ const Navbar = ({activeMenu}) => {
   const [doing, setDoing] = useState(false);
   const [done, setDone] = useState(false);
 
-
-  const Navbar = styled.div`
-    display: ${ activeMenu
-      ? `flex;`
-      : `none;`
-    };
-    flex-direction: column;
-    background-color: #1e1e1e;
-    color: white;
-    width: 250px;
-    padding: 10px;
-  `
 
   const NavbarTop = styled.div`
     display: flex;
@@ -178,7 +181,7 @@ const sliderSelection = (props) => {
 return (
 
       <>
-        <Navbar>
+        <NavbarComp active={activeMenu}>
             <NavbarTop>
               <Profile src={lucasPhoto}/>
               <NavbarTopIcons>
@@ -206,7 +209,7 @@ return (
               <p id='slider2' onClick={() => sliderSelection('slider2')}>Tags</p>
               <p id='slider3' onClick={() => sliderSelection('slider3')}>Filters</p>
             </Slider>
-          </Navbar>
+          </NavbarComp>
         </>
   )
 }
