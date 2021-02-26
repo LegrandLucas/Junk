@@ -7,10 +7,23 @@ import lucasPhoto from '../Images/lucasPhoto.png'
 import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 import AssignmentLateRoundedIcon from '@material-ui/icons/AssignmentLateRounded';
 import AssignmentTurnedInRoundedIcon from '@material-ui/icons/AssignmentTurnedInRounded';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-const Navbar = () => {
+
+const NavbarComp = styled.div`
+    background-color: #1e1e1e;
+    height: 100vh;
+    color: white;
+    width: 250px;
+    padding: 10px;
+    transform: ${props => props.active ? 'translateX(0px)' : 'translateX(-270px)'};
+    /* transition: all .2s ease-out; */
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.0,0.0,0.2,1);
+    position: fixed;
+    top: 0;
+    left: 0;
+  `
+const Navbar = ({activeMenu}) => {
 
   const [first, setFirst] = useState(true);
   const [second, setSecond] = useState(false);
@@ -18,54 +31,7 @@ const Navbar = () => {
   const [allTodos, setAllTodos] = useState(true);
   const [doing, setDoing] = useState(false);
   const [done, setDone] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(true)
 
-
-  const Navbar = styled.div`
-    /* display: flex; */
-    display: ${ activeMenu
-      ? `flex;`
-      : `none;`
-    };
-    flex-direction: column;
-    background-color: #1e1e1e;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 250px;
-    padding: 10px;
-  `
-
-  const HideBtn = styled.div`
-    background-color: #1e1e1e;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-     /* left: ${ activeMenu
-    ? `180px;`
-      : `0px;`
-    }; */
-    padding: 10px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    transform: ${ activeMenu
-      ? `translateX(500%);`
-      : `translateX(0%);`
-    };
-  `
-  // const HideBtnActive = styled.div`
-  //   background-color: #1e1e1e;
-  //   color: white;
-  //   position: fixed;
-  //   top: 0;
-  //   left: 0px;
-  //   padding: 10px;
-  //   transform: translateX(0%);
-  //   transition: transform 0.3s ease-in-out;
-  // `
 
   const NavbarTop = styled.div`
     display: flex;
@@ -215,7 +181,7 @@ const sliderSelection = (props) => {
 return (
 
       <>
-        <Navbar>
+        <NavbarComp active={activeMenu}>
             <NavbarTop>
               <Profile src={lucasPhoto}/>
               <NavbarTopIcons>
@@ -243,15 +209,8 @@ return (
               <p id='slider2' onClick={() => sliderSelection('slider2')}>Tags</p>
               <p id='slider3' onClick={() => sliderSelection('slider3')}>Filters</p>
             </Slider>
-          </Navbar>
-        <HideBtn expanded={activeMenu}>
-          {activeMenu
-            ? <ArrowForwardIosIcon onClick={() => setActiveMenu(!activeMenu)} />
-            : <ArrowBackIosIcon onClick={() => setActiveMenu(!activeMenu)} />
-          }
-          </HideBtn>
+          </NavbarComp>
         </>
-
   )
 }
 
