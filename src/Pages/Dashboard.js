@@ -34,12 +34,12 @@ const Dashboard = () => {
 
 
   const Dashboard = styled.div`
-    position: fixed;
-    left: 270px;
-    top: 0;
+    /* position: fixed; */
+    /* left: 270px; */
+    /* top: 0; */
     height: 100vh;
     background-color: #F9FAFB;
-    width: calc(100% - 270px);
+    /* width: calc(100% - 270px); */
   `
 
   const MenuBar = styled.div`
